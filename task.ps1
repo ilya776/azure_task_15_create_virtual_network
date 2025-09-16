@@ -26,9 +26,9 @@ $vnet = New-AzVirtualNetwork -Name $virtualNetworkName `
 
 # Add subnets
 Write-Host "Adding subnets ..."
-Add-AzVirtualNetworkSubnetConfig -Name $webSubnetName -AddressPrefix $webSubnetIpRange -VirtualNetwork $vnet
-Add-AzVirtualNetworkSubnetConfig -Name $dbSubnetName -AddressPrefix $dbSubnetIpRange -VirtualNetwork $vnet
-Add-AzVirtualNetworkSubnetConfig -Name $mngSubnetName -AddressPrefix $mngSubnetIpRange -VirtualNetwork $vnet
+$vnet = Add-AzVirtualNetworkSubnetConfig -Name $webSubnetName -AddressPrefix $webSubnetIpRange -VirtualNetwork $vnet
+$vnet = Add-AzVirtualNetworkSubnetConfig -Name $dbSubnetName -AddressPrefix $dbSubnetIpRange -VirtualNetwork $vnet
+$vnet = Add-AzVirtualNetworkSubnetConfig -Name $mngSubnetName -AddressPrefix $mngSubnetIpRange -VirtualNetwork $vnet
 
 # Apply changes
 $vnet | Set-AzVirtualNetwork
